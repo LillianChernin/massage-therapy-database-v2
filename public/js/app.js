@@ -31,7 +31,7 @@ const enterEditTechniqueMode = (e) => {
   e.target.parentNode.childNodes[8].classList.remove('hidden');
   e.target.parentNode.childNodes[11].classList.remove('hidden');
   e.target.parentNode.childNodes[15].classList.remove('hidden');
-  let getRequestUrl = '/api' + e.view.window.location.pathname;
+  let getRequestUrl = '/api/v1' + e.view.window.location.pathname;
   $.ajax({
     method: "GET",
     url: getRequestUrl,
@@ -48,7 +48,7 @@ const enterEditTechniqueMode = (e) => {
 const handleSaveChangesToTechniqueButton = (e) => {
   let updatedShortDescription = e.target.parentNode.childNodes[8].value;
   let updatedDetailedDescription = e.target.parentNode.childNodes[11].value;
-  let putRequestUrl = '/api' + e.view.window.location.pathname;
+  let putRequestUrl = '/api/v1' + e.view.window.location.pathname;
   $.ajax({
     method: "PUT",
     url: putRequestUrl,
@@ -76,7 +76,7 @@ const handleSaveChangesToTechniqueButton = (e) => {
 const handleDeleteTechniqueButton = (e) => {
   let techniqueBox = e.target.parentNode;
   let currentPath = e.view.window.location.pathname;
-  let url = '/api' + currentPath + '/' + e.target.dataset.techniqueid;
+  let url = '/api/v1' + currentPath + '/' + e.target.dataset.techniqueid;
   $.ajax({
     method: 'DELETE',
     url: url,
@@ -96,7 +96,7 @@ const handlePostNewCommentButton = (e) => {
   console.log(e.target.dataset.techniqueid);
   let currentPath = e.view.window.location.pathname;
   let comment = e.target.previousElementSibling.value;
-  let url = '/api/techniques/' + e.target.dataset.techniqueid;
+  let url = '/api/v1/techniques/' + e.target.dataset.techniqueid;
   let currentDate = getCurrentDate();
   $.ajax({
     method: 'POST',
@@ -124,8 +124,10 @@ const handlePostNewCommentButton = (e) => {
 const handleSubmitNewTechniqueButton = (e) => {
   console.log(e);
   let shortDescription = e.target.previousElementSibling.previousElementSibling.value;
+  console.log(shortDescription);
   let detailedDescription = e.target.previousElementSibling.value;
-  let url = '/api/disorders/' + e.target.dataset.disorderId + '/techniques';
+  console.log(detailedDescription);
+  let url = '/api/v1/disorders/' + e.target.dataset.disorderId + '/techniques';
   let currentPath = e.view.window.location.pathname;
   $.ajax({
     method: "POST",
@@ -162,7 +164,7 @@ const getNewTechniqueHtml = (json) => {
 let html = [];
 html.push('<fieldset></fieldset>');
 html.push('<h3></h3>');
-html.push(('<a href="http://localhost:3000/disorders/' + json[0]._id + '/techniques/' + json[1]._id + '>' + json[1].shortDescription + '</a>'));
+html.push(('<a href="/disorders/' + json[0]._id + '/techniques/' + json[1]._id + '>' + json[1].shortDescription + '</a>'));
 html.push('<p>' + json[1].detailedDescription + '</p>');
 html.push('<button class="deleteTechniqueButton" data-disorderId="' + json[0]._id + " data-techniqueId=" + json[1]._id + '>Delete Technique</button>');
   return html;
