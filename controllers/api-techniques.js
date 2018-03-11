@@ -30,3 +30,8 @@ const postCommentToTechnique = (req, res) => {
     res.status(200).send(newComment);
   });
 }
+
+module.exports.index = index;
+module.exports.show = show;
+module.exports.showComments = showComments;
+module.exports.postCommentToTechnique = postCommentToTechnique;

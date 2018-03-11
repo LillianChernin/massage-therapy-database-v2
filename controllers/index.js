@@ -5,3 +5,5 @@ const index = (req, res) => {
     documentTitle: "MT Database"
   })
 }
+
+module.exports.index = index;
