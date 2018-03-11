@@ -1,14 +1,14 @@
 <% include ../partials/header %>
 
-<h4 class="navigateBackToPreviousLevel"><a href="http://localhost:3000/disorders">Back to Main Musculoskeletal Disorders page</a></h4>
-<h3 class="individualDisorderHeaderLinks"><span><a href="http://localhost:3000/disorders/<%= data._id %>">Description</a></span><span> | </span><span class="deadLink">Techniques</span></h3>
+<h4 class="navigateBackToPreviousLevel"><a href="/disorders">Back to Main Musculoskeletal Disorders page</a></h4>
+<h3 class="individualDisorderHeaderLinks"><span><a href="/disorders/<%= data._id %>">Description</a></span><span> | </span><span class="deadLink">Techniques</span></h3>
 
 <div class="displayAllDisorderTechniques">
   <div class="individualDisorderTechniquesDisplay">
     <% if (data.techniques.length > 0) { %>
       <% for (let i = 0; i < data.techniques.length; i++) { %>
       <fieldset>
-        <h3><a href="http://localhost:3000/disorders/<%= data._id %>/techniques/<%= data.techniques[i]._id %>"><%= data.techniques[i].shortDescription %></a></h3>
+        <h3><a href="/disorders/<%= data._id %>/techniques/<%= data.techniques[i]._id %>"><%= data.techniques[i].shortDescription %></a></h3>
         <p><%= data.techniques[i].detailedDescription %></p>
         <button class="deleteTechniqueButton" data-disorderId="<%= data._id %>" data-techniqueId="<%= data.techniques[i]._id %>">Delete Technique</button>
       </fieldset>

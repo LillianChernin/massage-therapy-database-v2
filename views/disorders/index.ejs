@@ -4,8 +4,8 @@
   <div class="disorderDisplayBox">
     <h4><%= data[i].name %></h4>
     <p><%= data[i].description %></p>
-    <button><a href="http://localhost:3000/disorders/<%= data[i]._id %>">Full Description</a></button>
-    <button><a href="http://localhost:3000/disorders/<%= data[i]._id %>/techniques">Techniques</a></button>
+    <button><a href="/disorders/<%= data[i]._id %>">Full Description</a></button>
+    <button><a href="/disorders/<%= data[i]._id %>/techniques">Techniques</a></button>
   </div>
 <% } %>
 
