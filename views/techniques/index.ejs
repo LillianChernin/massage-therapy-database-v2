@@ -1,0 +1,10 @@
+<% include ../partials/header %>
+
+<% for(let i = 0; i < data.length; i++) { %>
+  <div class="techniqueDisplayBox">
+    <h4><%= data[i].shortDescription %></h4>
+    <p><%= data[i].detailedDescription %></p>
+  </div>
+<% } %>
+
+<% include ../partials/footer %>

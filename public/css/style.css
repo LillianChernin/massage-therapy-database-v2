@@ -1,0 +1,119 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+.navigateBackToPreviousLevel {
+  text-align: center;
+}
+.deadLink {
+  border: 1px solid #326b8c;
+  padding: 3px;
+  background-color: #28c138;
+}
+
+.header-header {
+  border-bottom: 2px solid black;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.main-header {
+  padding-top: 25px;
+  font-family: 'Muli', sans-serif;
+  text-align: center;
+}
+
+.header-title {
+  font-family: 'Muli', sans-serif;
+  font-size: 28px;
+  padding-left: 15px;
+}
+
+.header-logOrSignup {
+  font-family: 'Open Sans', sans-serif;
+  position: absolute;
+  right: 50px;
+  align: right;
+  text-transform: uppercase;
+  display: inline-block;
+}
+.main-page-title, .main-page-nav {
+  font-family: 'Muli', sans-serif;
+  text-align: center;
+}
+
+.disorderDisplayBox {
+  width: 30%;
+  display: inline-block;
+  border: 2px solid black;
+  text-align: center;
+  padding: 6px;
+}
+
+.footerNav {
+}
+
+.footerLinkGroup {
+  width: 33%;
+  display: inline-block;
+  text-align: center;
+}
+
+.footerLinkGroup1 {
+  background-color: rgba(197, 205, 219, .5);
+}
+
+.footerLinkGroup2 {
+  background-color: rgba(161, 177, 206, .5);
+}
+
+.footerLinkGroup3 {
+  background-color: rgba(144, 165, 204, .5);
+}
+
+.footerLinkGroupHeader {
+  text-align: center;
+}
+
+.footerLink {
+  display: block;
+  text-align: center;
+}
+
+.kaIndexMainLinks {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.kaIndexMainLink {
+  display: inline-block;
+  font-family: 'Muli', sans-serif;
+}
+
+.muscleDisplayBox {
+  border: 1px solid black;
+  margin: 0 auto;
+  width: 60%;
+  font-family: 'Muli', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+}
+.muscleAttributes {
+  display: block;
+  text-transform: capitalize;
+}
+
+.individualDisorderHeaderLinks {
+  text-align: center;
+}
+footer {
+ font-family: 'Muli', sans-serif;
+ position:fixed;
+ bottom: 0;
+ left: 0;
+ width: 100%;
+ background-color: #b3bed6;
+}
+
+.hidden {
+  display: none;
+}
