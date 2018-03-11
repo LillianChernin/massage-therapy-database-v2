@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<h4><a href="http://localhost:3000/disorders/<%= disorderId %>/techniques">Back to all techniques</a></h4>
+<h4><a href="/disorders/<%= disorderId %>/techniques">Back to all techniques</a></h4>
 <h1><%= data.shortDescription %></h1><textarea class="hidden updateTechniqueShortDescription" cols="35" rows="2"></textarea>
 <% if (data.author !== "db_owner") { %>
   <h3>Added By <%= data.author %></h3>
