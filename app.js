@@ -4,6 +4,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const passport = require('passport');
+const flash = require('connect-flash');
+const morgan = require('morgan');
 const session = require('express-session');
 const index = require('./routes/index');
 const app = express();
@@ -18,6 +21,7 @@ try {
 
 mongoose.connect(ENV.MONGODB_URI);
 
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

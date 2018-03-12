@@ -7,6 +7,7 @@ const techniqueSchema = new Schema ({
   detailedDescription: String,
   comments: [Comments.Schema],
   approved: {type: Boolean, default: false},
+  rating: Number,
   author: {type: String, default: "db_owner"}
 })
 
