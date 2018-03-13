@@ -8,6 +8,8 @@ const apiDisorders = require('./api-disorders');
 const apiMuscles = require('./api-muscles');
 const apiTechniques = require('./api-techniques');
 const indexController = require('../controllers/index');
+const authController = require('../controllers/auth');
+const userController = require('../controllers/user');
 
 router.use('/api/v1/users', users);
 router.use('/api/v1/disorders', apiDisorders);
@@ -16,6 +18,10 @@ router.use('/api/v1/techniques', apiTechniques);
 router.use('/techniques', techniques);
 router.use('/kinesiology-anatomy', kinesiologyAnatomy);
 router.use('/disorders', disorders);
+router.get('/login', authController.login);
+router.get('/signup', authController.signup);
+router.get('/logout', authController.logout);
+router.get('/profile', userController.showProfile);
 router.get('/', indexController.index);
 
 
