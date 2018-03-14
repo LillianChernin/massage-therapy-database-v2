@@ -22,6 +22,7 @@ https://trello.com/b/xpPg37MV/unit-2-project-massage-therapy-database
 
 - Node.js
 - Express
+- Heroku for deployment
 - EJS and HTML
 - CSS
 - JavaScript and JQuery
