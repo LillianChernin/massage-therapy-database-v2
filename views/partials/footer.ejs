@@ -2,14 +2,32 @@
   <fieldset>
     <button class="googleSignUp"><a href='/auth/google'>Sign Up with Google</a></button>
   </fieldset>
+  <fieldset>
+    <h3>Sign Up</h3>
+    <label for="firstName">First Name</label>
+    <input id="signupFirstNameInput" type="text" name="firstName"></input>
+    <label for="lastName">Last Name</label>
+    <input id="signupLastNameInput" type="text" name="lastName"></input>
+    <label for="username">Username</label>
+    <input id="signupUsernameInput" type="text" name="username"></input>
+    <label for="email">Email</label>
+    <input id="signupEmailInput" type="text" name="email"></input>
+    <label for="confirmEmail">Confirm Email</label>
+    <input id="signupConfirmEmailInput" type="text" name="confirmEmail"></input>
+    <label for="password">Password</label>
+    <input id="signupPasswordInput" type="password" name="password"></input>
+    <label for="confirmPassword">Confirm Password</label>
+    <input id="signupConfirmPasswordInput" type="password" name="confirmPassword"></input>
+    <button id="signupButton">Sign Up</button>
+  </fieldset>
 </div>
 <div class="loginDialog hidden" title="Login">
   <form>
     <fieldset>
       <label for="email">Email</label>
-      <input type="text" name="email" placeholder="Your Email">
+      <input id="loginEmailInput" type="text" name="email" placeholder="Your Email">
       <label for="password">Password</label>
-      <input type="password" name="password" placeholder="xxxxxxxx">
+      <input id="loginPasswordInput" type="password" name="password" placeholder="xxxxxxxx">
       <button class="loginButton">Log In</button>
     </fieldset>
   </form>

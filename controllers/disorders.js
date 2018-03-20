@@ -1,10 +1,13 @@
 const db = require('../models');
+const session = require('express-session');
 
 const index = (req, res) => {
+  console.log(req.session);
   db.Disorder.find((err, disorders) => {
     res.render('./disorders/index', {
       documentTitle: "Musculoskeletal Disorders",
-      data: disorders
+      data: disorders,
+      user: req.session.user
     });
   });
 }
@@ -14,7 +17,8 @@ const show = (req, res) => {
   db.Disorder.findById(currentId, (err, disorder) => {
     res.render('./disorders/individual-disorder', {
       documentTitle: disorder.name,
-      data: disorder
+      data: disorder,
+      user: req.session.user
     });
   });
 }
@@ -24,7 +28,8 @@ const techniquesByDisorder = (req, res) => {
   db.Disorder.findById(currentId, (err, disorder) => {
     res.render('./disorders/techniques-by-disorder-id', {
       documentTitle: disorder.name + ' - Techniques',
-      data: disorder
+      data: disorder,
+      user: req.session.user
     });
   });
 }
@@ -38,7 +43,8 @@ const singleTechniqueByDisorder = (req, res) => {
     res.render('./techniques/individual-technique', {
       documentTitle: disorderName + ' - ' + technique.shortDescription,
       data: technique,
-      disorderId: req.params.id
+      disorderId: req.params.id,
+      user: req.session.user
     });
   });
 }

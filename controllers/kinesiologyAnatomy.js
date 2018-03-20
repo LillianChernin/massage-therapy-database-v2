@@ -2,7 +2,8 @@ const db = require('../models');
 
 const index = (req, res) => {
   res.render('./kinesiology-anatomy/index', {
-    documentTitle: "Kinesiology and Anatomy"
+    documentTitle: "Kinesiology and Anatomy",
+    user: req.session.user
   });
 }
 
@@ -14,7 +15,8 @@ const bonesIndex = (req, res) => {
   })
   res.render('./kinesiology-anatomy/bones', {
     documentTitle: "Bones",
-    data: bones
+    data: bones,
+    user: req.session.user
   })
 }
 
@@ -25,7 +27,8 @@ const musclesIndex = (req, res) => {
     }
     res.render('./kinesiology-anatomy/muscles', {
       documentTitle: "Muscles",
-      data: muscles
+      data: muscles,
+      user: req.session.user
     })
   })
 }

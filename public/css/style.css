@@ -113,7 +113,20 @@ footer {
  width: 100%;
  background-color: #b3bed6;
 }
-
+input {
+  border: 2px solid #dadada;
+  border-radius: 7px;
+}
+.input-edit-mode {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+.invalid-input {
+  outline: none;
+  border-color: #ef432f;
+  box-shadow: 0 0 10px #ef432f;
+}
 .hidden {
   display: none;
 }

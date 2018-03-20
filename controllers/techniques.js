@@ -4,7 +4,8 @@ const index = (req, res) => {
   db.Technique.find((err, techniques) => {
    res.render('./techniques/index', {
      documentTitle: "Massage Techniques",
-     data: techniques
+     data: techniques,
+     user: req.session.user
    });
  });
 }
@@ -16,7 +17,8 @@ const show = (req, res) => {
     }
     res.render('./techniques/individual-technique', {
       documentTitle: model.shortDescription,
-      data: model
+      data: model,
+      user: req.session.user
     });
   });
 }

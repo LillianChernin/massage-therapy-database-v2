@@ -13,3 +13,4 @@ module.exports.Comment = require('./comment');
 module.exports.Disorder = require('./disorder');
 module.exports.Muscle = require('./muscle');
 module.exports.Technique = require('./technique');
+module.exports.User = require('./user');
