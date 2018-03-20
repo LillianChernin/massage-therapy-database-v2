@@ -280,11 +280,10 @@ const handlePostNewCommentButton = (e) => {
 }
 
 const handleSubmitNewTechniqueButton = (e) => {
-  console.log(e);
-  let shortDescription = e.target.previousElementSibling.previousElementSibling.value;
-  console.log(shortDescription);
-  let detailedDescription = e.target.previousElementSibling.value;
-  console.log(detailedDescription);
+  let shortDescription = document.getElementsByClassName('newTechniqueShortDescriptionInput')[0].value;
+  let detailedDescription = document.getElementsByClassName('newTechniqueDetailedDescriptionInput')[0].value;
+  let userId = document.getElementsByClassName('userObjectIdInput')[0].id.split('-')[1];
+  let userUsername = document.getElementsByClassName('userUsernameInput')[0].id.split('-')[1];
   let url = '/api/v1/disorders/' + e.target.dataset.disorderId + '/techniques';
   let currentPath = e.view.window.location.pathname;
   $.ajax({
@@ -292,7 +291,9 @@ const handleSubmitNewTechniqueButton = (e) => {
     url: url,
     data: {
       shortDescription: shortDescription,
-      detailedDescription: detailedDescription
+      detailedDescription: detailedDescription,
+      authorId: userId,
+      authorUsername: userUsername
     },
     success: (json) => {
       e.target.previousElementSibling.previousElementSibling.value = '';

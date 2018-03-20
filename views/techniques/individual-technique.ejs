@@ -1,21 +1,28 @@
 <% include ../partials/header %>
 <h4><a href="/disorders/<%= disorderId %>/techniques">Back to all techniques</a></h4>
-<h1><%= data.shortDescription %></h1><textarea class="hidden updateTechniqueShortDescription" cols="35" rows="2"></textarea>
 <% if (data.author !== "db_owner") { %>
-  <h3>Added By <%= data.author %></h3>
+  <h3>Added By <%= data.authorUsername %></h3>
 <% } %>
+<h1><%= data.shortDescription %></h1><textarea class="hidden updateTechniqueShortDescription" cols="35" rows="2"></textarea>
 <p><%= data.detailedDescription %></p><textarea class="hidden updateTechniqueDetailedDescription" cols="50" rows="8"></textarea>
-<button class="updateTechniqueButton" data-disorderId="<%= disorderId %>" data-techniqueId="<%= data._id %>">Edit Technique</button>
-<button class="saveChangesToTechniqueButton hidden" data-disorderId="<%= disorderId %>" data-techniqueId="<%= data._id %>">Save Changes</button>
+<% if (user) { %>
+  <% if (user._id === data.authorId) { %>
+    <button class="updateTechniqueButton" data-disorderId="<%= disorderId %>" data-techniqueId="<%= data._id %>">Edit Technique</button>
+    <button class="saveChangesToTechniqueButton hidden" data-disorderId="<%= disorderId %>" data-techniqueId="<%= data._id %>">Save Changes</button>
+  <% } %>
+<% } %>
 <fieldset>
   <h4>Comments</h4>
-  <p class="hidden requireLogout">Login to add a comment</p>
-  <div class="requireLogin">
+  <% if (user) { %>
+  <div>
     <fieldset class="addCommentForm">
       <textarea rows="3" cols="40" placeholder="Enter coment here" name="commentInputField"></textarea>
       <button class="postNewCommentButton" data-techniqueId="<%= data._id %>">Post Comment</button>
     </fieldset>
   </div>
+  <% } else { %>
+    <p>Login to add a comment</p>
+  <% } %>
   <% if (data.comments.length > 0) { %>
   <%  for (let k = 0; k < data.comments.length; k++) { %>
       <div class="commentBox">

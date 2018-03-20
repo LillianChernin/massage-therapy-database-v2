@@ -13,7 +13,8 @@
       <span class="header-logOrSignup">
         <% if (user) { %>
           <span><a href="/logout">logout</a></span>
-          <span><a href="/profile/<%= user.username %>">profile</a></span>
+          <span> | </span>
+          <span><a href="/profile">profile</a></span>
         <% } else { %>
         <span class="header-log"><a href="#">log in</a></span>
         <span> | </span>

@@ -8,7 +8,8 @@ const techniqueSchema = new Schema ({
   comments: [Comments.Schema],
   approved: {type: Boolean, default: false},
   rating: Number,
-  author: {type: String, default: "db_owner"}
+  authorId: String,
+  authorUsername: String
 })
 
 const Technique = mongoose.model('Technique', techniqueSchema);
