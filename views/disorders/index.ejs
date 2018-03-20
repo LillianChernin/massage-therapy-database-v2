@@ -1,9 +1,19 @@
 <% include ../partials/header.ejs %>
 
+<div class="page-header-wrapper">
+  <h1><%= documentTitle.toUpperCase() %></h1>
+</div>
+
 <% for(let i = 0; i < data.length; i++) { %>
   <div class="disorderDisplayBox">
     <h4><%= data[i].name %></h4>
+    <% if (data[i].description.length < 185) { %>
     <p><%= data[i].description %></p>
+    <% } else { %>
+    <p><%= data[i].description.split('').slice(0,185).join('') + '...' %>
+    <% } %>
+    <br>
+    <br>
     <button><a href="/disorders/<%= data[i]._id %>">Full Description</a></button>
     <button><a href="/disorders/<%= data[i]._id %>/techniques">Techniques</a></button>
   </div>

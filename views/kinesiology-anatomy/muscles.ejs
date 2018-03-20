@@ -1,5 +1,9 @@
 <% include ../partials/header %>
 
+<div class="page-header-wrapper">
+  <h1><%= documentTitle.toUpperCase() %></h1>
+</div>
+
 <% for (let i = 0; i < data.length; i++) { %>
 <div class="muscleDisplayBox">
   <h2><%= data[i].name %></h2>

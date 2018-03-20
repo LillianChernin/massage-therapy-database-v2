@@ -5,12 +5,6 @@ a {
 .navigateBackToPreviousLevel {
   text-align: center;
 }
-.deadLink {
-  border: 1px solid #326b8c;
-  padding: 3px;
-  background-color: #28c138;
-}
-
 .header-header {
   border-bottom: 2px solid black;
   padding-bottom: 10px;
@@ -21,11 +15,15 @@ a {
   font-family: 'Muli', sans-serif;
   text-align: center;
 }
-
 .header-title {
   font-family: 'Muli', sans-serif;
   font-size: 28px;
   padding-left: 15px;
+}
+.page-header-wrapper {
+  width: 80%;
+  margin: 48px auto;
+  text-align: center;
 }
 
 .header-logOrSignup {
@@ -47,38 +45,8 @@ a {
   border: 2px solid black;
   text-align: center;
   padding: 6px;
+  margin: 8px 1% 8px 1%;
 }
-
-.footerNav {
-}
-
-.footerLinkGroup {
-  width: 33%;
-  display: inline-block;
-  text-align: center;
-}
-
-.footerLinkGroup1 {
-  background-color: rgba(197, 205, 219, .5);
-}
-
-.footerLinkGroup2 {
-  background-color: rgba(161, 177, 206, .5);
-}
-
-.footerLinkGroup3 {
-  background-color: rgba(144, 165, 204, .5);
-}
-
-.footerLinkGroupHeader {
-  text-align: center;
-}
-
-.footerLink {
-  display: block;
-  text-align: center;
-}
-
 .kaIndexMainLinks {
   margin: 0 auto;
   width: 50%;
@@ -105,14 +73,6 @@ a {
 .individualDisorderHeaderLinks {
   text-align: center;
 }
-footer {
- font-family: 'Muli', sans-serif;
- position:fixed;
- bottom: 0;
- left: 0;
- width: 100%;
- background-color: #b3bed6;
-}
 input {
   border: 2px solid #dadada;
   border-radius: 7px;
@@ -126,6 +86,9 @@ input {
   outline: none;
   border-color: #ef432f;
   box-shadow: 0 0 10px #ef432f;
+}
+a:hover {
+  text-decoration: underline;
 }
 .hidden {
   display: none;

@@ -1,6 +1,11 @@
 <% include ../partials/header %>
+
+<div class="page-header-wrapper">
+  <h1><%= documentTitle.toUpperCase() %></h1>
+</div>
+
 <h4 class="navigateBackToPreviousLevel"><a href="/disorders">Back to Main Musculoskeletal Disorders page</a></h4>
-<h3 class="individualDisorderHeaderLinks"><span class="deadLink">Description</span><span> | </span><span><a href="/disorders/<%= data._id %>/techniques">Techniques</a></span></h3>
+<h3 class="individualDisorderHeaderLinks"><span>Description</span><span> | </span><span><a href="/disorders/<%= data._id %>/techniques">Techniques</a></span></h3>
 <article>
   <h2>Description</h2>
   <p><%= data.description %></p>

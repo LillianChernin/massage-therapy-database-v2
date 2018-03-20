@@ -36,7 +36,7 @@ $(document).ready(() => {
           password: loginPassword
         },
         success: () => {
-          alert('successfully logged in');
+          window.location = window.location.origin;
         },
         error: () => {
           console.log('login failed');
@@ -57,7 +57,7 @@ $(document).ready(() => {
           password: password
         },
         success: () => {
-          alert('user was successfully added!')
+          window.location = window.location.origin;
         },
         error: () => {
           console.log('error creating new user');
@@ -79,27 +79,26 @@ $(document).ready(() => {
   const signupEmailInput = document.getElementById('signupEmailInput');
   const signupConfirmEmailInput = document.getElementById('signupConfirmEmailInput');
 
-  signupFirstNameInput.onfocus = () => {
-    signupFirstNameInput.classList.add('input-edit-mode');
-    signupFirstNameInput.classList.remove('invalid-input');
-  }
-  signupLastNameInput.onfocus = () => {
-    signupLastNameInput.classList.add('input-edit-mode');
-    signupLastNameInput.classList.remove('invalid-input');
-  }
-  signupUsernameInput.onfocus = () => {
-    signupUsernameInput.classList.add('input-edit-mode');
-    signupUsernameInput.classList.remove('invalid-input');
-  }
-  signupEmailInput.onfocus = () => {
-    signupEmailInput.classList.add('input-edit-mode');
-    signupEmailInput.classList.remove('invalid-input');
-  }
-  signupConfirmEmailInput.onfocus = () => {
-
-  }
+  // signupFirstNameInput.onfocus = () => {
+  //   signupFirstNameInput.classList.add('input-edit-mode');
+  //   signupFirstNameInput.classList.remove('invalid-input');
+  // }
+  // signupLastNameInput.onfocus = () => {
+  //   signupLastNameInput.classList.add('input-edit-mode');
+  //   signupLastNameInput.classList.remove('invalid-input');
+  // }
+  // signupUsernameInput.onfocus = () => {
+  //   signupUsernameInput.classList.add('input-edit-mode');
+  //   signupUsernameInput.classList.remove('invalid-input');
+  // }
+  // signupEmailInput.onfocus = () => {
+  //   signupEmailInput.classList.add('input-edit-mode');
+  //   signupEmailInput.classList.remove('invalid-input');
+  // }
+  // signupConfirmEmailInput.onfocus = () => {
+  //
+  // }
   signupFirstNameInput.onblur = () => {
-    signupFirstNameInput.classList.remove('input-edit-mode');
     if (signupFirstNameInput.value === '') {
       console.log('First Name field cannot be blank');
       signupFirstNameInput.classList.add('invalid-input');
@@ -296,14 +295,7 @@ const handleSubmitNewTechniqueButton = (e) => {
       authorUsername: userUsername
     },
     success: (json) => {
-      e.target.previousElementSibling.previousElementSibling.value = '';
-      e.target.previousElementSibling.value = '';
-      // let newTechniqueHtml = getNewTechniqueHtml(json);
-      // let newTechniqueDiv = document.createElement('div');
-      // console.log(newTechniqueHtml);
-      // newTechniqueDiv.insertAdjacentHTML('beforeend', newTechniqueHtml[2]);
-      // e.target.parentNode.parentNode.prepend(newTechniqueDiv);
-      // console.log(json);
+      window.location = window.location.href;
     },
     error: () => {
       console.log("ajax post error!");
