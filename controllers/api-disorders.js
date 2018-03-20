@@ -46,6 +46,30 @@ const addTechnique = (req, res) => {
   });
 }
 
+const updateDisorderDesc = (req, res) => {
+  db.Disorder.findOne({_id: req.params.id}, (err, disorder) => {
+    disorder.description = req.body.description;
+    disorder.save((err, saved) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.status(200).send(saved);
+    })
+  })
+}
+
+const updateDisorderCautions = (req, res) => {
+  db.Disorder.findOne({_id: req.params.id}, (err, disorder) => {
+    disorder.cautions = req.body.cautions;
+    disorder.save((err, saved) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.status(200).send(saved);
+    })
+  })
+}
+
 const updateTechnique = (req, res) => {
   db.Technique.findOne({_id: req.params.technique_id}, (err, technique) => {
     technique.shortDescription = req.body.shortDescription;
@@ -92,5 +116,7 @@ module.exports.showTechniques = showTechniques;
 module.exports.showTechniqueById = showTechniqueById;
 module.exports.showTechniqueComments = showTechniqueComments;
 module.exports.addTechnique = addTechnique;
+module.exports.updateDisorderDesc = updateDisorderDesc;
+module.exports.updateDisorderCautions = updateDisorderCautions;
 module.exports.updateTechnique = updateTechnique;
 module.exports.deleteTechnique = deleteTechnique;

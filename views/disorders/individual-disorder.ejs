@@ -8,11 +8,27 @@
 <h3 class="individualDisorderHeaderLinks"><span>Description</span><span> | </span><span><a href="/disorders/<%= data._id %>/techniques">Techniques</a></span></h3>
 <article>
   <h2>Description</h2>
-  <p><%= data.description %></p>
+  <p class="disorder-description"><%= data.description %></p>
+  <% if (user) { %>
+    <% if (user.username === 'admin') { %>
+      <textarea rows="20" cols="120" class="hidden editDisorderDescTextarea"><%= data.description %></textarea>
+      <button class="editDisorderDescButton">Edit Disorder Description</button>
+      <button data-disorderid="<%= data._id %>" class="saveChangesDisorderDescButton hidden">Save Changes</button>
+      <button class="cancelChangesDisorderDescButton hidden">Cancel Changes</button>
+    <% } %>
+  <% } %>
 </article>
 <article>
   <h2>Cautions</h2>
-  <p><%= data.cautions %></p>
+  <p class="disorder-cautions"><%= data.cautions %></p>
+  <% if (user) { %>
+    <% if (user.username === 'admin') { %>
+      <textarea rows="20" cols="120" class="hidden editDisorderCautionsTextarea"><%= data.cautions %></textarea>
+      <button class="editDisorderCautionsButton">Edit Disorder Cautions</button>
+      <button data-disorderid="<%= data._id %>" class="saveChangesDisorderCautionsButton hidden">Save Changes</button>
+      <button class="cancelChangesDisorderCautionsButton">Cancel Changes</button>
+    <% } %>
+  <% } %>
 </article>
 
 <% include ../partials/footer %>

@@ -16,7 +16,9 @@
   <% if (user) { %>
   <div>
     <fieldset class="addCommentForm">
-      <textarea rows="3" cols="40" placeholder="Enter coment here" name="commentInputField"></textarea>
+      <textarea class="addCommentTextarea" rows="3" cols="40" placeholder="Enter coment here" name="commentInputField"></textarea>
+      <input class="userObjectIdInput hidden" id="newComment-<%= user._id %>" type="text">
+      <input class="userUsernameInput hidden" id="newComment-<%= user.username %>" type="text">
       <button class="postNewCommentButton" data-techniqueId="<%= data._id %>">Post Comment</button>
     </fieldset>
   </div>
@@ -28,6 +30,11 @@
       <div class="commentBox">
         <h5 class="commentHeader"><%= data.comments[k].userName %> - <%= data.comments[k].date %></h5>
         <p class="comment"><%= data.comments[k].comment %></p>
+        <% if (user) { %>
+          <% if (user._id === data.comments[k].userId) { %>
+            <button data-commentid="<%= data.comments[k]._id %>" class="deleteCommentButton">Remove Comment</button>
+          <% } %>
+        <% } %>
       </div>
   <% } %>
 <% } %>

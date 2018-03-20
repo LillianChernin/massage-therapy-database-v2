@@ -22,6 +22,27 @@ $(document).ready(() => {
   $('.saveChangesToTechniqueButton').on('click', (e) => {
     handleSaveChangesToTechniqueButton(e);
   })
+  $('.saveChangesDisorderDescButton').on('click', (e) => {
+    handleSaveChangesDisorderDescButton(e);
+  })
+  $('.saveChangesDisorderCautionsButton').on('click', (e) => {
+    handleSaveChangesDisorderCautionsButton(e);
+  })
+  $('.deleteCommentButton').on('click', (e) =>{
+    handleDeleteCommentButton(e);
+  })
+  $('.editDisorderDescButton').on('click', (e) => {
+    handleEditDisorderDescButton(e);
+  })
+  $('.editDisorderCautionsButton').on('click', (e) => {
+    handleEditDisorderCautionsButton(e);
+  })
+  $('.cancelChangesDisorderDescButton').on('click', (e) => {
+    handleCancelChangesDisorderDescButton(e);
+  })
+  $('.cancelChangesDisorderCautionsButton').on('click', (e) => {
+    handleCancelChangesDisorderCautionsButton(e);
+  })
   $('.loginButton').on('click', (e) => {
     e.preventDefault();
     let loginEmail = document.getElementById('loginEmailInput').value;
@@ -202,6 +223,72 @@ const enterEditTechniqueMode = (e) => {
   })
 }
 
+const handleEditDisorderDescButton = (e) => {
+  $('.editDisorderDescButton').addClass('hidden');
+  $('.saveChangesDisorderDescButton').removeClass('hidden');
+  $('.cancelChangesDisorderDescButton').removeClass('hidden');
+  $('.editDisorderDescTextarea').removeClass('hidden');
+}
+
+const handleEditDisorderCautionsButton = (e) => {
+  $('.editDisorderCautionsButton').addClass('hidden');
+  $('.saveChangesDisorderCautionsButton').removeClass('hidden');
+  $('.cancelChangesDisorderCautionsButton').removeClass('hidden');
+  $('.editDisorderCautionsTextarea').removeClass('hidden');
+}
+
+const handleCancelChangesDisorderDescButton = (e) => {
+  $('.editDisorderDescButton').removeClass('hidden');
+  $('.saveChangesDisorderDescButton').addClass('hidden');
+  $('.cancelChangesDisorderDescButton').addClass('hidden');
+  document.getElementsByClassName('editDisorderDescTextarea')[0].value = document.getElementsByClassName('disorder-description')[0].innerHTML;
+  $('.editDisorderDescTextarea').addClass('hidden');
+}
+
+const handleCancelChangesDisorderCautionsButton = (e) => {
+  $('.editDisorderCautionsButton').removeClass('hidden');
+  $('.saveChangesDisorderCautionsButton').addClass('hidden');
+  $('.cancelChangesDisorderCautionsButton').addClass('hidden');
+  document.getElementsByClassName('editDisorderCautionsTextarea')[0].value = document.getElementsByClassName('disorder-cautions')[0].innerHTML;
+  $('.editDisorderCautionsTextarea').addClass('hidden');
+}
+
+const handleSaveChangesDisorderDescButton = (e) => {
+  let newDisorderDesc = document.getElementsByClassName('editDisorderDescTextarea')[0].value;
+  let putRequestUrl = '/api/v1' + window.location.pathname + '/update-description';
+  $.ajax({
+    method: "PUT",
+    url: putRequestUrl,
+    data: {
+      description: newDisorderDesc
+    },
+    success: () => {
+      window.location = window.location.href;
+    },
+    error: () => {
+      console.log('error updating description');
+    }
+  })
+}
+
+const handleSaveChangesDisorderCautionsButton = (e) => {
+  let newDisorderCautions = document.getElementsByClassName('editDisorderCautionsTextarea')[0].value;
+  let putRequestUrl = '/api/v1' + window.location.pathname + '/update-cautions';
+  $.ajax({
+    method: "PUT",
+    url: putRequestUrl,
+    data: {
+      cautions: newDisorderCautions
+    },
+    success: () => {
+      window.location = window.location.href;
+    },
+    error: () => {
+      console.log('error updating cautions');
+    }
+  })
+}
+
 const handleSaveChangesToTechniqueButton = (e) => {
   let updatedShortDescription = e.target.parentNode.childNodes[8].value;
   let updatedDetailedDescription = e.target.parentNode.childNodes[11].value;
@@ -247,12 +334,29 @@ const handleDeleteTechniqueButton = (e) => {
   })
 }
 
+const handleDeleteCommentButton = (e) => {
+  let currentTechniqueId = window.location.pathname.split('/')[4];
+  let deleteCommentReqUrl = '/api/v1/techniques/' + currentTechniqueId + '/comments/' + e.target.dataset.commentid;
+  $.ajax({
+    method: 'DELETE',
+    url: deleteCommentReqUrl,
+    success: () => {
+      window.location = window.location.href;
+    },
+    error: () => {
+      console.log('Error deleting comment');
+    }
+  })
+}
+
 
 const handlePostNewCommentButton = (e) => {
   console.log(e);
   console.log(e.target.dataset.techniqueid);
   let currentPath = e.view.window.location.pathname;
-  let comment = e.target.previousElementSibling.value;
+  let comment = document.getElementsByClassName('addCommentTextarea')[0].value;
+  let userNameForComment = document.getElementsByClassName('userUsernameInput')[0].id.split('-')[1];
+  let userIdForComment = document.getElementsByClassName('userObjectIdInput')[0].id.split('-')[1];
   let url = '/api/v1/techniques/' + e.target.dataset.techniqueid;
   let currentDate = getCurrentDate();
   $.ajax({
@@ -260,17 +364,13 @@ const handlePostNewCommentButton = (e) => {
     url: url,
     data: {
       comment: comment,
-      userName: "db_owner",
+      userName: userNameForComment,
+      userId: userIdForComment,
       date: currentDate
     },
     success: (json) => {
-      e.target.previousElementSibling.value = "";
-      console.log('success');
-      console.log(json);
-      // $.ajax({
-      //   method: 'GET',
-      //   url: currentPath
-      // })
+      document.getElementsByClassName('addCommentTextarea')[0].value = "";
+      window.location = window.location.href;
     },
     error: () => {
       console.log("ajax post comment error");

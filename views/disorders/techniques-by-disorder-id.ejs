@@ -30,8 +30,8 @@
       <h3>Add New Technique</h3>
       <textarea class="newTechniqueShortDescriptionInput" name="shortDescription" rows="2" cols="40" placeholder="Technique name..."></textarea>
       <textarea class="newTechniqueDetailedDescriptionInput" name="detailedDescription" rows="12" cols="80" placeholder="Detailed description..."></textarea>
-      <input class="userObjectIdInput hidden" id="newTechnique-<%= user._id %>" type="text"></input>
-      <input class="userUsernameInput hidden" id="newTechnique-<%= user.username %>" type="text"></input>
+      <input class="userObjectIdInput hidden" id="newTechnique-<%= user._id %>" type="text">
+      <input class="userUsernameInput hidden" id="newTechnique-<%= user.username %>" type="text">
       <button class="submitNewTechniqueButton" data-disorder-id="<%= data._id %>">Submit New Technique</button>
     </fieldset>
     <% } else { %>
