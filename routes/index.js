@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const users = require('./users');
+const apiUsers = require('./api-users');
 const techniques = require('./techniques');
 const kinesiologyAnatomy = require('./kinesiologyAnatomy');
 const disorders = require('./disorders');
@@ -11,7 +11,7 @@ const indexController = require('../controllers/index');
 const authController = require('../controllers/auth');
 const userController = require('../controllers/user');
 
-router.use('/api/v1/users', users);
+router.use('/api/v1/users', apiUsers);
 router.use('/api/v1/disorders', apiDisorders);
 router.use('/api/v1/muscles', apiMuscles);
 router.use('/api/v1/techniques', apiTechniques);

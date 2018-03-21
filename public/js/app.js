@@ -43,6 +43,12 @@ $(document).ready(() => {
   $('.cancelChangesDisorderCautionsButton').on('click', (e) => {
     handleCancelChangesDisorderCautionsButton(e);
   })
+  $('.addTechniqueToFavButton').on('click', (e) => {
+    handleAddTechniqueToFavButton(e);
+  })
+  $('.removeTechniqueFromFavButton').on('click', (e) => {
+    handleRemoveTechniqueFromFavButton(e);
+  })
   $('.loginButton').on('click', (e) => {
     e.preventDefault();
     let loginEmail = document.getElementById('loginEmailInput').value;
@@ -349,10 +355,56 @@ const handleDeleteCommentButton = (e) => {
   })
 }
 
+const handleAddTechniqueToFavButton = (e) => {
+  e.target.classList.add('hidden');
+  let favTechniqueId = e.target.dataset.techniqueid;
+  let favDisorderName = e.target.dataset.disordername;
+  let favDisorderId = e.target.dataset.disorderid;
+  let favUserId = e.target.dataset.userid;
+  let favTechniqueShortDescription = document.getElementsByClassName('shortDescription-' + favTechniqueId)[0].innerHTML;
+  let favTechniqueDetailedDescription = document.getElementsByClassName('detailedDescription-' + favTechniqueId)[0].innerHTML;
+  let putRequestUrl = '/api/v1/users/' + favUserId + '/add-technique-to-favorites';
+  $.ajax({
+    method: 'PUT',
+    url: putRequestUrl,
+    data: {
+      techniqueId: favTechniqueId,
+      disorderName: favDisorderName,
+      disorderId: favDisorderId,
+      techniqueShortDescription: favTechniqueShortDescription,
+      techniqueDetailedDescription: favTechniqueDetailedDescription
+    },
+    success: () => {
+      document.getElementsByClassName('addedToFav-' + favTechniqueId)[0].classList.remove('hidden');
+    },
+    error: () => {
+      console.log('Error adding technique to favorites');
+    }
+  })
+}
+
+const handleRemoveTechniqueFromFavButton = (e) => {
+  e.target.classList.add('hidden');
+  let favUserId = e.target.dataset.userid;
+  let favTechniqueId = e.target.dataset.techniqueid;
+  let putRequestUrl = '/api/v1/users/' + favUserId + '/remove-technique-from-favorites';
+  $.ajax({
+    method: 'PUT',
+    url: putRequestUrl,
+    data: {
+      techniqueId: favTechniqueId
+    },
+    success: () => {
+      document.getElementsByClassName('removedFromFav-' + favTechniqueId)[0].classList.remove('hidden');
+    },
+    error: () => {
+      console.log('error removing technique from favorites');
+    }
+  })
+}
+
 
 const handlePostNewCommentButton = (e) => {
-  console.log(e);
-  console.log(e.target.dataset.techniqueid);
   let currentPath = e.view.window.location.pathname;
   let comment = document.getElementsByClassName('addCommentTextarea')[0].value;
   let userNameForComment = document.getElementsByClassName('userUsernameInput')[0].id.split('-')[1];
