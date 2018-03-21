@@ -264,17 +264,17 @@ const muscleList = [
   }
 ]
 
-db.Muscle.remove({}, (err, muscles) => {
-  db.Muscle.create(muscleList, (err, muscles) => {
-    if (err) {
-      return console.log('ERROR ' + err);
-    }
-    console.log("all muscles: " + muscles);
-    console.log("created " + muscles.length + " muscles");
-    process.exit();
-  })
-})
-
+// db.Muscle.remove({}, (err, muscles) => {
+//   db.Muscle.create(muscleList, (err, muscles) => {
+//     if (err) {
+//       return console.log('ERROR ' + err);
+//     }
+//     console.log("all muscles: " + muscles);
+//     console.log("created " + muscles.length + " muscles");
+//     process.exit();
+//   })
+// })
+//
 db.Disorder.remove({}, (err, disorders) => {
   db.Disorder.create(disorderList, (err, disorders) => {
     if (err) {
@@ -285,3 +285,24 @@ db.Disorder.remove({}, (err, disorders) => {
     process.exit();
   })
 })
+// db.User.remove({}, (err, users) => {
+//   if (err) {
+//     return console.log('ERROR ' + err);
+//   }
+//   console.log('all users successfully removed');
+//   process.exit();
+// })
+
+// db.Technique.remove({}, (err, techniques) => {
+//   if (err) {
+//     return console.log('ERROR ' + err);
+//   }
+//   console.log('all techniques successfully removed');
+//   process.exit();
+// })
+
+
+// db.User.update({_id:''}, { $set: { favoriteTechniques: [] }}, (err, affected) => {
+//     console.log('affected: ', affected);
+//     process.exit();
+// });

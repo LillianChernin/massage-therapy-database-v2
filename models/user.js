@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
     index: true
   },
   bio: String,
-  favoriteTechniques: Array,
+  favoriteTechniques: {type: Schema.Types.Mixed, default: {}},
   sessions: Array,
   image: String,
   password: String,

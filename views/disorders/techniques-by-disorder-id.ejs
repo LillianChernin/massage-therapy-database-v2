@@ -15,20 +15,6 @@
         <h3><a href="/disorders/<%= data._id %>/techniques/<%= data.techniques[i]._id %>" class="shortDescription-<%= data.techniques[i]._id %>"><%= data.techniques[i].shortDescription %></a></h3>
         <p class="detailedDescription-<%= data.techniques[i]._id %>"><%= data.techniques[i].detailedDescription %></p>
         <% if (user) { %>
-          <% let techniqueFound = false %>
-          <% if (user.favoriteTechniques.length > 0) { %>
-            <% for (let k = 0; k < user.favoriteTechniques.length; k++) { %>
-              <% if (user.favoriteTechniques[k].techniqueId === data.techniques[i]._id) { %>
-                <% techniqueFound = true %>
-                <button class="removeTechniqueFromFavButton" data-techniqueid="<%= data.techniques[i]._id %>" data-userid="<%= user._id %>">Remove From Favorites</button>
-                <button class="removedFromFav-<%= data.techniques[i]._id %> hidden">Removed From Favorites</button>
-              <% } %>
-            <% } %>
-          <% } %>
-          <% if (techniqueFound === false) { %>
-            <button class="addTechniqueToFavButton" data-disordername="<%= data.name %>" data-disorderid="<%= data._id %>" data-userid="<%= user._id %>" data-techniqueid="<%= data.techniques[i]._id %>">Add Technique to Favorites</button>
-            <button class="addedToFav-<%= data.techniques[i]._id %> hidden">Added to Favorites!</button>
-          <% } %>
           <% if (user._id === data.techniques[i].authorId) { %>
             <button class="deleteTechniqueButton" data-disorderId="<%= data._id %>" data-techniqueId="<%= data.techniques[i]._id %>">Delete Technique</button>
           <% } %>
